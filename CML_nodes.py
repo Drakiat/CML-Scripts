@@ -1,7 +1,10 @@
 import paramiko
 import re
 import time
-
+username = input('Username:')
+password = input('Password:')
+lab_ip = input('CML IP Adrress: ')
+lab_id = input('Lab ID: ')
 
 # create SSH client
 
@@ -29,7 +32,7 @@ print(nodes)
 # iterate over nodes and run command
 
 for node in nodes:
-    
+    print("[*] Starting Commands for node: "+node)
     channel = client.invoke_shell()
     open_command="open "+"/"+lab_id+"/"+node+"/0"+"\n"
     node_command="sh run\n" 
@@ -60,6 +63,7 @@ for node in nodes:
     print(response)
     with open(node+"_config.txt",'w+') as file:
         file.write(response)
+        print("[*] File written for node: "+node)
         file.close()
     channel.close()
 
