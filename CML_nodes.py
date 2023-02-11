@@ -1,14 +1,14 @@
 import paramiko
 import re
 import time
-username = input('Username:')
-password = input('Password:')
-lab_ip = input('CML IP Adrress: ')
+username = input('Username: ')
+password = input('Password: ')
+lab_ip = input('CML IP Address: ')
 lab_id = input('Lab ID: ')
 
 # create SSH client
-
-print("Make sure all the TTYs are open on CML!!(just press enter a couple times)")
+print("Make sure all the TTYs are open on CML!!\n(just press enter a couple times)")
+input("Press enter to confirm all terminals are ready.")
 client = paramiko.SSHClient()
 client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 print("Connecting to: "+lab_ip)
